@@ -1,0 +1,11 @@
+.mainFeaturedPost{
+    background-color: inherit;
+    border-radius: 10px !important;
+}
+.featuredPost{
+    background-color: inherit !important;
+    border: 0.1rem solid white !important;
+    border-radius: 5px !important;
+    box-shadow: 1px 1px 1px 1px white !important;
+    margin-left: auto !important;
+}

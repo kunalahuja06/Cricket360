@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './Home';
+import Container from '@mui/material/Container';
 
 function App() {
   return (
     <div className="App">
-      <div className="container">
+      <Container>
         <Home/>
-      </div>
+      </Container>
     </div>
   );
 }
