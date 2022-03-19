@@ -1,11 +1,8 @@
-.mainFeaturedPost{
-    background-color: inherit;
-    border-radius: 10px !important;
-}
-.featuredPost{
-    background-color: inherit !important;
-    border: 0.1rem solid white !important;
-    border-radius: 5px !important;
-    box-shadow: 1px 1px 1px 1px white !important;
-    margin-left: auto !important;
+.userButton{
+    color:white !important;
+    margin:5px !important;
+    background-color: teal !important;
+    font-weight: bolder;
+    
+
 }

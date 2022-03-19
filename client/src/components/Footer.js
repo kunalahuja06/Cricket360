@@ -1,19 +1,19 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="white" align="center">
-      {"Copyright © "}
+    <Typography variant="body2" color="#fff" align="center">
+      {'Copyright © '}
       <Link color="inherit" href="/">
         Cricket360
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
   );
 }
@@ -22,15 +22,15 @@ function Footer(props) {
   const { description, title } = props;
 
   return (
-    <Box component="footer" sx={{ bgcolor: "#0A1929", py: 6 }}>
+    <Box component="footer" sx={{ bgcolor: '#0A1929', py: 6 }}>
       <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
+        <Typography variant="h6" align="center" gutterBottom color="#fff">
           {title}
         </Typography>
         <Typography
           variant="subtitle1"
           align="center"
-          color="text.secondary"
+          color="#fff"
           component="p"
         >
           {description}

@@ -9,8 +9,11 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Button from "@mui/material/Button";
+import './ComponentStyles.css'
+import {Link} from 'react-router-dom'
 
-const settings = ["Profile","Logout"];
+const settings = ["Profile", "Logout"];
 
 const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -21,8 +24,7 @@ const Navbar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  }
-  
+  };
 
   return (
     <div className="container">
@@ -55,11 +57,25 @@ const Navbar = () => {
             ></Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="contained"
+                  className="userButton"
+                  onClick={"/login"}
+                >
+                  Log in
+                </Button>
+              </Link>
+              <Link to="/register" style={{ textDecoration: "none" }}>
+                <Button variant="contained" className="userButton">
+                  Regsiter
+                </Button>
+              </Link>
+              {/* <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
