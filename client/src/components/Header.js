@@ -44,7 +44,7 @@ const Navbar = () => {
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             ></Box>
             <Typography
-              c
+              
               variant="h6"
               noWrap
               component="div"
