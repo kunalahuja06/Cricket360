@@ -68,7 +68,7 @@ const Navbar = () => {
               </Link>
               <Link to="/register" style={{ textDecoration: "none" }}>
                 <Button variant="contained" className="userButton">
-                  Regsiter
+                  Register
                 </Button>
               </Link>
               {/* <Tooltip title="Open settings">

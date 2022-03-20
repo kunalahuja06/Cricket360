@@ -1,10 +1,14 @@
-// if (process.env.NODE_ENV != "production") {
-//   require("dotenv").config();
-// }
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors=require('cors')
+
+const User=require('./models/User')
+const Post=require('./models/Post')
+
+const port = process.env.PORT || 5000;
+app.use(cors());
+app.use(express.json());
 
 require("dotenv").config();
 const url = process.env.MONGODB_URL;
@@ -20,4 +24,4 @@ app.get('/',(req,res)=>{
     res.send("We are good to go!")
 })
 
-app.listen(3000,(req,res)=>{console.log("serving on port 3000")})
+app.listen(port,(req,res)=>{console.log("serving on port 3000")})
