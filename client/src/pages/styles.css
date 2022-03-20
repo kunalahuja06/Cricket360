@@ -1,0 +1,60 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items:center; 
+    margin: auto;
+    
+}
+
+@keyframes example {
+  0%   {opacity: 0%;}
+  50%  {opacity:50% ;}
+  100% {opacity:100% ;}
+}
+.container>form{
+    background-color: #0A1929 !important;
+    padding:30px;
+    margin:auto;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color:white;
+    animation-name: example;
+    animation-duration: 3s;
+}
+.userInput{
+    padding: 5px;
+   
+}
+.userInput>label{
+    font-weight: bolder;
+    color:#fff;
+}
+.userInput>input{
+    display: flex;
+    padding: 10px;
+    margin-top: 7px;
+    flex-direction: row;
+    border:1px solid lightcoral;
+    border-radius:5px;
+    box-shadow: 2px px lightgray;
+    width:300px;
+}
+
+.submitButton{
+    color: white;
+    display: flex;
+    margin:auto;
+    font-weight:bolder;
+    background-color: teal;
+    border: 1px solid teal;
+    margin-top:5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+.redirect{
+    color:white;
+    font-size: 1rem;
+    float: right;
+}
