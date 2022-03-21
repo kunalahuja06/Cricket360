@@ -64,9 +64,21 @@ const Navbar = () => {
             >
               Cricket360
             </Typography>
+
             <Box
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             ></Box>
+            {user !== null && username == "KunalAhuja" && (
+              <Link to="/createpost" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="contained"
+                  className="createPostButton"
+                  size="small"
+                >
+                  Create Post
+                </Button>
+              </Link>
+            )}
             <Box sx={{ flexGrow: 0 }}>
               {user === null ? (
                 <>
@@ -88,6 +100,7 @@ const Navbar = () => {
               ) : (
                 <Tooltip title="Open settings">
                   <AccountBoxIcon
+                    className="userIcon"
                     onClick={handleOpenUserMenu}
                     fontSize={"large"}
                   ></AccountBoxIcon>

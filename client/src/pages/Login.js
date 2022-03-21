@@ -22,7 +22,6 @@ function Login() {
       }),
     })
     const res = await response.json();
-    console.log(res.user.username)
     if(res.user){
       dispatch({
         type: "LOGIN",
