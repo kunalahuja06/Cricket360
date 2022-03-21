@@ -13,6 +13,8 @@ import './ComponentStyles.css'
 import {Link} from 'react-router-dom'
 import {useAuth} from '../authContext'
 import {useNavigate} from 'react-router-dom'
+import logo from '../assets/logo.png'
+import MenuIcon from "@mui/icons-material/Menu";
 
 const settings = ["Profile", "Logout"];
 
@@ -29,6 +31,15 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const menu=()=>{
+    var x = document.getElementById("actionButtons");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
   const logoutUser=()=>{
     handleCloseUserMenu()
     localStorage.removeItem("jwtToken");
@@ -44,26 +55,11 @@ const Navbar = () => {
       <AppBar position="static" style={{ backgroundColor: "#0A1929" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              fontWeight="bold"
-              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-            >
-              Cricket360
-            </Typography>
+            <img src={logo} alt="" className="logo" />
+
             <Box
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             ></Box>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-            >
-              Cricket360
-            </Typography>
 
             <Box
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
@@ -80,6 +76,10 @@ const Navbar = () => {
               </Link>
             )}
             <Box sx={{ flexGrow: 0 }}>
+              <a className="hamburger">
+                <MenuIcon onClick={menu} />
+              </a>
+
               {user === null ? (
                 <>
                   <Link to="/login" style={{ textDecoration: "none" }}>
@@ -137,6 +137,14 @@ const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
+      <div id="actionButtons">
+        <a href="/login" className="actionLink" onho>
+          Login
+        </a>
+        <a href="/register" className="actionLink">
+          Register
+        </a>
+      </div>
     </div>
   );
 };

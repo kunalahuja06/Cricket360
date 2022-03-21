@@ -1,3 +1,14 @@
+.logo{
+    display:inline-flex;
+    border-radius: 20px 7px 20px 8px;
+    width: 160px;
+    height:60px;
+    margin: 10px;
+    margin-left: auto;
+    background-color: #fff;
+    box-shadow: 3px 5px lightgray;
+}
+
 .userButton{
     color:white !important;
     margin:5px !important;
@@ -15,4 +26,40 @@
 }
 .userIcon{
     margin-left: 8px !important;
+}
+
+.hamburger, #actionButtons{
+    display: none;
+}
+#actionButtons > a{
+color: white;
+display: flex;
+  padding:5px 8px;
+  text-decoration: none;
+  font-size: 17px;
+  color:white;
+}
+#actionButtons{
+    background-color: #0A1929;
+    margin-top: 2px !important;
+    padding:10px;
+    width:100% !important;
+}
+
+
+@media screen and (max-width:560px) {
+    .hamburger{
+    display: flex;
+    }
+    .userButton{
+        display: none !important;
+    }
+}
+@media screen and (min-width:561px){
+.hamburger, #actionButton{
+    display: none;
+    }
+    .userButton{
+        display:flex;
+    }
 }
