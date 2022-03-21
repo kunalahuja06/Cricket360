@@ -64,7 +64,7 @@ const Navbar = () => {
             <Box
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             ></Box>
-            {user !== null && username == "KunalAhuja" && (
+            {user !== null && username === "KunalAhuja" && (
               <Link to="/createpost" style={{ textDecoration: "none" }}>
                 <Button
                   variant="contained"

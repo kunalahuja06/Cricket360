@@ -1,13 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Blog from "./pages/Blog";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import authReducer, { initialState } from "./authReducer";
-import { AuthProvider } from "./authContext";
 import CreatePost from "./pages/CreatePost";
 import { useAuth } from "./authContext";
 

@@ -10,7 +10,7 @@ function Register() {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const [confirmpassword, setConfirmPassword] = useState('');
-    const [username,setUsername]=useState()
+    const [username,setUsername]=useState('')
     const [errors,setErrors]=useState({})
     
 
@@ -29,7 +29,6 @@ function Register() {
           }),
         })
         const res= await response.json()
-        console.log(res)
         if(res.data){
            localStorage.setItem("jwtToken", res.token);
            localStorage.setItem("username", res.data.username);
