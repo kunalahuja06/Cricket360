@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./styles.css";
+import { useAuth } from "../authContext";
+import { useNavigate } from "react-router-dom";
 
-function Register() {
+function Login() {
+ const navigate = useNavigate();
+ const [, dispatch] = useAuth();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -16,9 +20,19 @@ function Register() {
         email,
         password,
       }),
-    });
-    const data = response.json();
-    console.log(data);
+    })
+    const res = await response.json();
+    console.log(res.user.username)
+    if(res.user){
+      dispatch({
+        type: "LOGIN",
+        payload: res.user,
+        username: res.user.username,
+      });
+      localStorage.setItem("jwtToken", res.token);
+      localStorage.setItem("username", res.user.username);
+      navigate("/");
+    }
   };
 
   return (
@@ -31,7 +45,7 @@ function Register() {
           <div className="userInput">
             <label htmlFor="email">Email:</label>
             <input
-              type="text"
+              type="email"
               name="email"
               id="email"
               placeholder="enter email..."
@@ -58,4 +72,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;

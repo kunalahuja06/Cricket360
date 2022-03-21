@@ -1,30 +1,49 @@
 import React, { useState } from 'react'
 import './styles.css'
+import {useAuth} from '../authContext'
+import {useNavigate} from 'react-router-dom'
 
 function Register() {
-    const [email,setEmail]=useState()
-    const [password,setPassword]=useState()
-    const [confirmpassword, setConfirmPassword] = useState();
+  const navigate=useNavigate()
+    const [,dispatch]=useAuth()
+
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
+    const [confirmpassword, setConfirmPassword] = useState('');
     const [username,setUsername]=useState()
+    const [errors,setErrors]=useState({})
     
 
     const handleSubmit=async(e)=>{
         e.preventDefault()
-        const response = await fetch("http://localhost:5000/register",
-        {
+        const response = await fetch("http://localhost:5000/register", {
           method: "POST",
           headers: {
-            "Content-type": "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             email,
+            username,
             password,
             confirmpassword,
-            username,
           }),
-        });
-        const data=response.json()
-        console.log(data)
+        })
+        const res= await response.json()
+        console.log(res)
+        if(res.data){
+           localStorage.setItem("jwtToken", res.token);
+           localStorage.setItem("username", res.data.username);
+
+           dispatch({
+             type: "LOGIN",
+             payload: res.data,
+             username: res.data.username,
+           });
+           navigate('/')
+
+        }
+
+       
     }   
 
   return (

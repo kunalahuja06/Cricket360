@@ -2,20 +2,23 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import './ComponentStyles.css'
 import {Link} from 'react-router-dom'
+import {useAuth} from '../authContext'
+import {useNavigate} from 'react-router-dom'
 
 const settings = ["Profile", "Logout"];
 
 const Navbar = () => {
+  const navigate=useNavigate()
+  const [{user,username},dispatch]=useAuth()
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -25,6 +28,16 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const logoutUser=()=>{
+    handleCloseUserMenu()
+    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("username");
+    dispatch({
+      type: "LOGOUT",
+    });
+    navigate("/");
+  }
 
   return (
     <div className="container">
@@ -44,7 +57,6 @@ const Navbar = () => {
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             ></Box>
             <Typography
-              
               variant="h6"
               noWrap
               component="div"
@@ -55,27 +67,33 @@ const Navbar = () => {
             <Box
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             ></Box>
-
             <Box sx={{ flexGrow: 0 }}>
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                <Button
-                  variant="contained"
-                  className="userButton"
-                  onClick={"/login"}
-                >
-                  Log in
-                </Button>
-              </Link>
-              <Link to="/register" style={{ textDecoration: "none" }}>
-                <Button variant="contained" className="userButton">
-                  Register
-                </Button>
-              </Link>
-              {/* <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip> */}
+              {user === null ? (
+                <>
+                  <Link to="/login" style={{ textDecoration: "none" }}>
+                    <Button
+                      variant="contained"
+                      className="userButton"
+                      onClick={"/login"}
+                    >
+                      Log in
+                    </Button>
+                  </Link>
+                  <Link to="/register" style={{ textDecoration: "none" }}>
+                    <Button variant="contained" className="userButton">
+                      Register
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <Tooltip title="Open settings">
+                  <AccountBoxIcon
+                    onClick={handleOpenUserMenu}
+                    fontSize={"large"}
+                  ></AccountBoxIcon>
+                </Tooltip>
+              )}
+
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
@@ -93,7 +111,10 @@ const Navbar = () => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem
+                    key={setting}
+                    onClick={logoutUser}
+                  >
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}

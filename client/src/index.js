@@ -6,19 +6,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Blog from './pages/Blog'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import authReducer, { initialState } from "./authReducer";
+import { AuthProvider } from "./authContext";
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Blog/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
-    </Routes>
-    </BrowserRouter>
+    <AuthProvider initialState={initialState} reducer={authReducer}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Blog />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
