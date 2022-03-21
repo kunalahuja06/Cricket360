@@ -112,6 +112,7 @@ const Navbar = () => {
               >
                 {settings.map((setting) => (
                   <MenuItem
+                    className="headerSidebarMenu"
                     key={setting}
                     onClick={logoutUser}
                   >
